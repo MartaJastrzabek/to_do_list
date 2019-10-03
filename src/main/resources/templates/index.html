@@ -17,10 +17,8 @@
     <div class="content">
         <div class="content-tasks">
             <h4 th:text="${tasksHeader}">Wszystkie dodane zadania: </h4><br/>
-
-            <!--<li th:each="task : ${showTasks}" th:text="${task.toString()}"></li>-->
             <div class="task-element" th:each="task : ${showTasks}">
-                <form action="/update" method="post">
+                <form action="/update" method="post" th:style="${task.deadlineDate &lt; today and task.isDone == false} ? 'background-color:red'">
                     <input class="form-check-input" type="checkbox" name="taskstate" th:checked="${task.isDone}"
                            id="task-checkbox">
                     <label for="task-checkbox">

@@ -1,5 +1,6 @@
 package pl.martajastrzabek.todolist.controller;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import pl.martajastrzabek.todolist.entity.Task;
 import pl.martajastrzabek.todolist.entity.TaskCategory;
 import pl.martajastrzabek.todolist.repository.TasksRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -48,6 +50,8 @@ public class TaskController {
                 tasksHeader = "Wszystkie zadania do zrobienia";
             }
         }
+        LocalDate today = LocalDate.now();
+        model.addAttribute("today", today);
         model.addAttribute("tasksHeader", tasksHeader);
         model.addAttribute("showTasks", showTasks);
 
