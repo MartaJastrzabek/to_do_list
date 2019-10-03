@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css" th:href="@{/style.css}"/>
+</head>
+<body>
+<div class="header" th:fragment="header">
+    <h1>Task manager</h1>
+</div>
+<div class="menu" th:fragment="menu">
+    <div class="menu-element">
+        <a href="/add">Dodaj nowe zadanie</a>
+    </div>
+    <div class="menu-element">
+        <a href="/?show=todo">Wyświetl wszystkie do zrobienia</a>
+    </div>
+    <div class="menu-element">
+        <a href="/?show=done">Wyświetl zrealizowane</a>
+    </div>
+    <div class="menu-element">
+        <a href="/">Wyświetl wszystkie</a>
+    </div>
+    <div class="menu-element">
+        <a th:href="'/?sort=date' + ${show != null ? '&show=' + show : ''}">Sortuj od najpilniejszych</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css" th:href="@{/style.css}"/>
+</head>
+<body>
+<div class="site">
+    <div th:replace="myfragments::header"></div>
+    <div th:replace="myfragments::menu"></div>
+    <div class="content">
+        <div class="content-tasks">
+            <h4 th:text="${tasksHeader}">Wszystkie dodane zadania: </h4><br/>
+
+            <!--<li th:each="task : ${showTasks}" th:text="${task.toString()}"></li>-->
+            <div class="task-element" th:each="task : ${showTasks}">
+                <form action="/update" method="post">
+                    <input class="form-check-input" type="checkbox" name="taskstate" th:checked="${task.isDone}"
+                           id="task-checkbox">
+                    <label for="task-checkbox">
+                        <a th:href="'/edit?id=' + ${task.id}" th:text="${task.toString()}">Edytuj wpis</a>
+                    </label>
+                    <input type="hidden" name="taskid" th:value="${task.id}">
+                    <input class="task-element-input" type="submit" value="aktualizuj!">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

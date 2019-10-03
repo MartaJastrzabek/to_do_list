@@ -1,0 +1,67 @@
+.header {
+    background-color: lightslategrey;
+    width: 1000px;
+    padding: 30px;
+    margin: auto;
+    text-align: center;
+}
+
+.site {
+    background-color: beige;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    background-color: lightgray;
+    width: 1000px;
+    min-height: 600px;
+    margin: auto;
+    padding: 30px;
+}
+
+.menu {
+    background-color: lightslategrey;
+    width: 1000px;
+    height: 50px;
+    margin: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: navy;
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
+.form-element {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: flex-end;
+}
+
+.form-input {
+    width: 70%;
+}
+
+.form-element label {
+    width: 30%;
+}
+
+.task-element-input {
+    float: right;
+}

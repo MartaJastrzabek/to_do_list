@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css" th:href="@{/style.css}"/>
+</head>
+<body>
+<div class="site">
+    <div th:replace="myfragments::header"></div>
+    <div th:replace="myfragments::menu"></div>
+    <div class="content">
+        <div class="add-task-form">
+            <h4>Dodaj nowe zadanie: </h4>
+            <form class="add-form" action="/add" method="post" th:object="${task}">
+                <div class="form-element">
+                    <label for="name">Podaj nazwę: </label>
+                    <input class="form-input" required type="text" id="name" th:field="*{name}">
+                </div>
+                <div class="form-element">
+                    <label for="deadline">Do kiedy: </label>
+                    <input class="form-input" required type="date" id="deadline" th:field="*{deadlineDate}">
+                </div>
+                <div class="form-element">
+                    <label for="category">Wybierz kategorie: </label>
+                    <select class="form-input" name="category" id="category" required>
+                        <option value="" th:disabled="disabled" th:selected="selected">wybierz...</option>
+                        <option th:field="*{category}" th:each="taskCategory : ${taskCategories}"
+                                th:value="${taskCategory}" th:text="${taskCategory.name}"></option>
+                    </select>
+                </div>
+                <div class="form-element">
+                    <label for="isDone">Wykonane: </label>
+                    <input class="form-input" type="checkbox" id="isDone" th:field="*{isDone}">
+                </div>
+                <div class="form-element">
+                    <input class="form-input" type="submit" value="dodaj!">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
